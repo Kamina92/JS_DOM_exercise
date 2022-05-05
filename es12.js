@@ -4,36 +4,30 @@
 //   Esempio:
 //     Input: i topi non avevano nipoti
 //     Output: TRUE
+// str.replace(/\W/g, "").
 
 
+function palindroma(text) {
+    
 
-function palindromi() {
- let text =['i','t','o','p','i','n','o','n','a','v','e','v','a','n','o','n','i','p','o','t','f'];
- let texttemp=text;
- console.log(texttemp);
- text.reverse();
- console.log(text);
+    let textnospace= text.replace(/\W/g, "");
 
-let control =0;
+    let textr="";
 
-    for (let i = 0; i <= text.length; i++) {
-        
-        if (texttemp[i] != text[i] ) {
-            control = 1;
-        }
-        
-        
-    } 
+    let textlen = textnospace.length;
 
-    if (control == 1) {
-
-        return false;
-        
-    } else{
-        return true;
+    for (let i = 0; i <= textlen; i++) {
+    
+        textr+= textnospace.charAt(textlen-i);
+    
     }
-  
+
+    if (textnospace !== textr) {
+    return false;
+    } else return true;
+    
 }
 
-console.log(palindromi());
+let input = "i topi non avevano nipoti";
 
+console.log(palindroma(input));
