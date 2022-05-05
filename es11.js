@@ -14,7 +14,7 @@
 function cifre(num) {
 
     let a = 0;
-    num = num /=10;
+    num /=10;
     
     if (num<1) {
          a = 1;
@@ -32,6 +32,6 @@ function cifre(num) {
 } 
 
 
-let a = cifre(9999);
+let a = cifre(5);
 
 console.log(a);
