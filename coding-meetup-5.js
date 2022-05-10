@@ -29,13 +29,45 @@ let list1 = [
 ];
 
 
-let iterator = list1.entries();
-console.log(iterator);
 
-let prova = [];
+
 let obj = {};
 list1.forEach((user,i) => {
-    prova.push(user.language);
+    if (obj[user.language]==undefined){
+      obj[user.language]= 1;
+    } else {
+      obj[user.language]++;
+    }
 });
 
-console.log(prova);
+
+console.log(obj);
+
+
+
+
+
+
+// function countLanguages(list) {
+  
+//   let languages = { C: 0, JavaScript: 0, Ruby: 0 }
+  
+  
+//   list.forEach(user => {
+  
+//       if(user.language == 'C'){
+//         languages.C++;
+//       }
+  
+//       if(user.language == 'JavaScript'){
+//         languages.JavaScript++;
+//       }
+  
+//       if(user.language == 'Ruby'){
+//         languages.Ruby++;
+//       }
+    
+//   });
+  
+//   return languages;
+//   }
