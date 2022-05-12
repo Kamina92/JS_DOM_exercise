@@ -18,6 +18,7 @@ let inputNumber = document.querySelector('#inputNumber');
 
 let yesModal = document.querySelector('#yesModal');
 let noModal = document.querySelector('#noModal');
+let deleteModal = document.querySelector('#deleteModal')
 
 // icone
 
@@ -142,7 +143,7 @@ console.dir(inputNumber);
 
 
 
-delContact.addEventListener('click', ()=>{
+yesModal.addEventListener('click', ()=>{
 
     rubrica.delContact(inputName.value);
     if(verifica == false){
@@ -151,6 +152,8 @@ delContact.addEventListener('click', ()=>{
         verifica = true;
     }
     inputName.value = '';
+
+    
 
 })
 
