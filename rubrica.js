@@ -55,7 +55,7 @@ let rubrica = {
             div.innerHTML = `
             <p>${contact.phoneName}</p>
             <p>${contact.phoneNumber}</p>
-            <i class="fa-solid fa-trash-can"></i>
+            <i class="fa-solid fa-trash-can" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
             `
             contactWrapper.appendChild(div);
             
@@ -66,8 +66,10 @@ let rubrica = {
         icons = document.querySelectorAll('.fa-trash-can');
         icons.forEach((icon,i) => {
             icon.addEventListener('click', ()=>{
-                let contact = array[i].phoneName;
-                this.delContact(contact);
+                yesModal.addEventListener('click', ()=>{
+                    let contact = array[i].phoneName;
+                    this.delContact(contact);
+                })
             })
             
         });
