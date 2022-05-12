@@ -54,3 +54,28 @@ p{
     height: 50px;
     margin-left: 5px;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btnDelMod{
+
+    background-color: var(--b);
+    color: var(--g);
+    border: 1px solid var(--g);
+    transition: 0.4s;
+}
+
+.btnDelMod:hover{
+    background-color: var(--g);
+    color: var(--b);
+}
+
+.bodyDelMod{
+    background-color: var(--b);
+    border: 1px solid var(--g);
+
+}

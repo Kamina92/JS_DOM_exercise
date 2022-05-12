@@ -14,6 +14,11 @@ let contactWrapper = document.querySelector('#contactWrapper')
 let inputName = document.querySelector('#inputName');
 let inputNumber = document.querySelector('#inputNumber');
 
+// bottoni modale
+
+let yesModal = document.querySelector('#yesModal');
+let noModal = document.querySelector('#noModal');
+
 // icone
 
 let icons;
