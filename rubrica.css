@@ -24,10 +24,24 @@ p{
     font-size: 20px;
     transition: 0.5s;
 }
+.btnCustomActive{
+
+    background-color: var(--g);
+    color: var(--b);
+    border: 1px solid var(--b);
+    padding: 30px;
+    font-size: 20px;
+    transition: 0.5s;
+}
 
 .btnCustom:hover{
     background-color: var(--g);
     color: var(--b);
+    transform: scale(1.2);
+}
+.btnCustomActive:hover{
+    background-color: var(--b);
+    color: var(--g);
     transform: scale(1.2);
 }
 
