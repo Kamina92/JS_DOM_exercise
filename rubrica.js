@@ -14,6 +14,10 @@ let contactWrapper = document.querySelector('#contactWrapper')
 let inputName = document.querySelector('#inputName');
 let inputNumber = document.querySelector('#inputNumber');
 
+// icone
+
+let icons;
+
 
 // Verifica
 
@@ -34,10 +38,10 @@ let rubrica = {
 
 
 
-    showContacts : function () {
+    showContacts : function (array) {
 
         contactWrapper.innerHTML='';
-        this.contatcs.forEach(contact => {
+        array.forEach(contact => {
 
             let div = document.createElement('div');
             div.classList.add('col-12','col-md-3','contactCard','d-flex','justify-content-evenly','align-items-center','mt-5');
@@ -45,8 +49,20 @@ let rubrica = {
             div.innerHTML = `
             <p>${contact.phoneName}</p>
             <p>${contact.phoneNumber}</p>
+            <i class="fa-solid fa-trash-can"></i>
             `
             contactWrapper.appendChild(div);
+            
+            
+            
+        })
+        
+        icons = document.querySelectorAll('.fa-trash-can');
+        icons.forEach((icon,i) => {
+            icon.addEventListener('click', ()=>{
+                let contact = array[i].phoneName;
+                this.delContact(contact);
+            })
             
         });
     },
@@ -54,7 +70,7 @@ let rubrica = {
     addContact : function (nome,numero) {
             
         this.contatcs.push({phoneName : nome, phoneNumber : numero});
-        this.showContacts();  
+        this.showContacts(this.contatcs);  
         
     },
 
@@ -66,18 +82,23 @@ let rubrica = {
         if(index>=0){
             this.contatcs.splice(index,1);
         }
-        this.showContacts();
+        this.showContacts(this.contatcs);
 
     },
 
-}
+    srcContact : function(nome) {
+        let filtered = this.contatcs.filter((contatti)=> contatti.phoneName == nome)
+        this.showContacts(filtered)
+        console.log(filtered);
+    }
 
+}
 
 
 showContacts.addEventListener('click', ()=>{
     if(verifica == false){
         showContacts.innerHTML = 'Nascondi contatti'
-        rubrica.showContacts();
+        rubrica.showContacts(rubrica.contatcs);
         showContacts.classList.add('btnCustomActive')
         verifica = true;
     } else if(verifica == true){
@@ -129,3 +150,8 @@ delContact.addEventListener('click', ()=>{
 })
 
 
+srcContact.addEventListener('click',()=>{
+
+    rubrica.srcContact(inputName.value);
+
+})
