@@ -1,0 +1,68 @@
+:root{
+    --w : rgb(251, 251, 251);
+    --r : rgb(225, 0, 0);
+}
+
+
+body{
+
+    font-family: 'Bowlby One', cursive;
+    color: var(--r);
+}
+
+.img-head{
+    height: 300px;
+    width: 300px;
+}
+
+.title{
+    border: 20px dotted yellow;
+    animation-name: sign;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.cardPlayer{
+
+    height: 300px;
+    width: 300px;
+    border: 2px solid var(--r);
+    border-radius: 10px;
+}
+
+
+.img-card{
+    height: 170px;
+    width: 200px;
+}
+
+
+.btnSet{
+    padding: 20px 30px ;
+    color: var(--w);
+    background-color: var(--r);
+    border-radius: 20px;
+    border: 2px solid black;
+    transition: 0.4s;
+}
+
+.btnSet:hover{
+    transform: scale(1.3);
+    background-color: var(--w);
+    border: 2px solid var(--r);
+    color: var(--r);
+}
+
+
+
+
+
+
+
+@keyframes sign {
+
+    0%{border: 20px dotted yellow; font-size: 70px;}
+    50%{border: 40px dotted yellow; font-size: 90px;}
+    100%{border: 20px dotted yellow; font-size: 70px;}
+    
+}

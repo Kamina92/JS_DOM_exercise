@@ -61,6 +61,7 @@ let rubrica = {
             
             
             
+            
         })
         
         icons = document.querySelectorAll('.fa-trash-can');
@@ -97,7 +98,6 @@ let rubrica = {
     srcContact : function(nome) {
         let filtered = this.contatcs.filter((contatti)=> contatti.phoneName == nome)
         this.showContacts(filtered)
-        console.log(filtered);
     }
 
 }
