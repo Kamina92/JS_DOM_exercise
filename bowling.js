@@ -9,6 +9,8 @@ let setWinner = document.querySelector('#setWinner');
 let cardWrapper = document.querySelector('#cardWrapper');
 
 
+
+
 let bowling = {
 
     players : [
@@ -32,29 +34,83 @@ let bowling = {
                     <img src="${player.url}" alt="" class="img-fluid img-card">
                     <p>${player.playerName}</p>
                     <p>${player.score}</p>
-                    <p>Punteggio finale</p>
+                    <p id='finalPunti' class='d-none'>${player.finalScore}</p>
+                    <p id='winner'></p>
+
                 </div>  
             `
             cardWrapper.appendChild(div);
-            
+
         });
     },
 
     setScore : function (){
-
+        
+        
+        
         for(let i=0; i<10; i++){
             this.players.forEach((player,i) =>{
                 player.score.push(Math.floor(Math.random() * (11)))
             });
         }
-        
 
+        this.showPlayers(this.players);
+        
+        
+        
+    },
+    
+    setWinner : function(){
+
+        this.players.forEach((player,i) =>{
+            player.finalScore = 0;
+            player.finalScore = player.score.reduce((acc,n)=> acc+n)
+        });
+
+        this.players.sort((a,b)=> b.finalScore-a.finalScore);
+
+        this.showPlayers(this.players)
+
+        
+        let finalPunti = document.querySelectorAll('#finalPunti');
+        console.log(finalPunti);
+
+        finalPunti.forEach((el,i)=>{
+            
+            el.classList.remove('d-none');
+
+        })
+
+        let winner = document.querySelector('#winner')
+
+        winner.innerHTML = 'Il vincitore !!!!!';
 
     },
+
+        
+    
 }
 
-bowling.showPlayers(bowling.players)
 
-bowling.setScore()
+
+newGame.addEventListener('click',()=>{
+
+    bowling.players.forEach((el)=>{
+        el.score=[];
+    })
+    bowling.showPlayers(bowling.players);
+})
+
+// bowling.showPlayers(bowling.players)
+
+setScore.addEventListener('click',()=>{
+    bowling.players.forEach(player => player.score = []);
+    bowling.setScore();
+})
+
+setWinner.addEventListener('click', ()=>{
+    bowling.setWinner()
+
+})
 
 console.log(bowling);

@@ -24,7 +24,7 @@ body{
 
 .cardPlayer{
 
-    height: 300px;
+    min-height: 300px;
     width: 300px;
     border: 2px solid var(--r);
     border-radius: 10px;
