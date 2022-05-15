@@ -425,6 +425,72 @@ function reverse(str) {
     
 }
 
-let str='Ciao a tutti';
-
+// let str='Ciao a tutti';
 // console.log(reverse(str));
+
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA UN ARRAY DI NUMERI E NE RITORNI LA MEDIA E LA DEVIAZIONE STANDARD
+
+function mediaDeviazione(array) {
+
+    let media = (array.reduce((acc,n)=> acc+n))/array.length;
+
+    let num = 0;
+
+    array.forEach((el,i)=>{
+        num += Math.pow((el-media),2)
+    })
+
+    num = Math.sqrt(num/array.length)
+
+    return `la media è : ${media}, la deviazione standard è : ${num}`
+
+}
+
+// let arr = [1,2,3]
+
+// console.log(mediaDeviazione(arr));
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO UN ARRAY DI NUMERI RITORNARE LA SOMMA SE QUESTA E' PARI ALTRIMENTI LA MEDIA
+
+function sumOravarage(array) {
+
+    if((array.reduce((acc,n)=>acc+n)%2==0)){
+        return array.reduce((acc,n)=>acc+n);
+    } else{
+        return array.reduce((acc,n)=>acc+n)/array.length
+    }
+    
+}
+
+// let arr = [2,2,3];
+
+// console.log(sumOravarage(arr));
+
+// SCRIVERE UN PROGRAMMA CHE CHIEDA ALL'UTENTE DI INSERIRE UN NUMERO LANCIARE UN ALERT CHE COMUNICA SE IL NUMERO E PARI O DISPARI
+
+function pariOdispari() {
+    
+    let num = prompt('Inserire un numero');
+
+    if(num%2 == 0){
+        return  alert('Il numero è PARI');
+    } else alert('Il numero è DISPARI');
+}
+
+// pariOdispari()
+
+// SCRIVERE UNA FUNZIONE CHE ASSEGNATO UN NUMERO NATURALE RITORNI LA SOMMA DI TUTTI I NUMERI NATURALI DA 1 AL NUMERO ASSEGNATO 
+
+function sumTo(num) {
+    let final=0;
+    for(let i = 1; i<=num ;){
+        final += i
+    }
+
+    return final;
+    
+}
+console.log(sumTo(4));
+
+console.log('aa');
