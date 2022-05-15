@@ -10,6 +10,12 @@ body{
     color: var(--r);
 }
 
+span{
+    
+    padding: 5px;
+    border: 1px solid var(--r);
+}
+
 .img-head{
     height: 300px;
     width: 300px;

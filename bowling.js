@@ -33,7 +33,7 @@ let bowling = {
                 <div class="cardPlayer text-center">
                     <img src="${player.url}" alt="" class="img-fluid img-card">
                     <p>${player.playerName}</p>
-                    <p id='playerScore'>${player.score}</p>
+                    <p id='playerScore' class='d-none d-flex justify-content-around'><span>${player.score[0]}</span><span>${player.score[1]}</span><span>${player.score[2]}</span><span>${player.score[3]}</span><span>${player.score[4]}</span><span>${player.score[5]}</span><span>${player.score[6]}</span><span>${player.score[7]}</span><span>${player.score[8]}</span><span>${player.score[9]}</span></p>
                     <p id='finalPunti' class='d-none'>${player.finalScore}</p>
                     <p id='winner'></p>
 
@@ -52,8 +52,13 @@ let bowling = {
                 player.score.push(Math.floor(Math.random() * (11)))
             });
         }
-
         this.showPlayers(this.players);
+
+        let playerScore = document.querySelectorAll('#playerScore');
+        
+        playerScore.forEach((el,i)=>{
+            el.classList.remove('d-none')
+        });
 
         
         
