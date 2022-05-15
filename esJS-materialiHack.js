@@ -214,6 +214,217 @@ function arrRandom(n,min,max) {
 
 function createObj(array) {
 
-    
+    let obj = Object.fromEntries(array)
+
+    return obj
     
 }
+
+// let arr = [['nome','mario'],['cognome','rossi'],['anni','32']]
+
+// console.log(createObj(arr));
+
+// SCRIVERE UNA FUNZIONE ChannelMergerNode,ASSEGNATA UNA STRONGA, RITORNI UN OGGETTO CON CHIAVI LE PAROLE (DISTINTE) E VALORI LA LORO FREQUENZA
+// AD ESEMPIO 'QUELLA COSA AFFIANCO ALLA COSA SULLA COSA ' => {QUELLA : 1,COSA:3,AFFIANCO:1,ALLA:1,SULLA:1}
+
+function countWord(str) {
+
+    let obj ={};
+
+    let arr = str.split(' ');
+
+    let app=[];
+
+    arr.forEach((el,i)=>{
+
+        app = arr.filter(a => a == el)
+
+        obj[app[0]] = app.length
+    })
+    
+    console.log(obj);
+
+
+    
+}
+
+// let str = 'Ramarro marrone marrone ramarro marrone Ramarro';
+
+// countWord(str)
+
+// SCRIVERE UNA FUNZIONE CHE DATA UNA STRINGA TRASFORNMI LA PRIMA LETTERA DI OGNI PAROLA IN MAIUSCOLO
+
+function capitalize(str) {
+
+    str = str.split(' ');
+
+    str.forEach((el,i) => {
+       el = el.split('')
+       el[0] = el[0].toUpperCase();
+       el = el.join('')
+       str[i]=el;
+    })
+    
+    return str.join(' ');
+    
+}
+
+// let str = 'Ramarro marrone marrone ramarro marrone Ramarro';
+
+// console.log(capitalize(str)); 
+
+
+// SCRIVERE UNA FUNZIONE CHE ASSEGNATA UNA STRINGA RITORNI IL NUMERO DI VOCALI PRESENTI (GESTIRE LE MAIUSCOLE)
+
+function countVowels(str) {
+
+    str = str.toLowerCase();
+
+    str = str.replace(/[aeiou]/g, '1')
+
+    str = str.split('');
+
+    str = str.filter(el => el=='1')
+
+    return str.length
+    
+}
+
+// let str = 'Ciao a tutti'
+
+// console.log(countVowels(str))
+
+
+// SCRIVERE UNA FUNZIONE CHE, ASSEGNATA UNA STRINGA,NE FACCIA LO SLUG AD ESEMPIO 'Sono una stringa'=> '/sono-una-stringa'
+
+function slug(str) {
+
+    let final = '/';
+
+    str = str.toLowerCase();
+
+    str = str.replace(/\s/g,'-')
+
+    return final+str
+
+
+    
+}
+
+
+// let str = 'Ciao a tutti';
+
+// console.log(slug(str));
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA UNA STRINGA E RESTITUISCE LA PAROLA PIU LUNGA
+
+function longestWord(str) {
+
+    str = str.split(' ').sort((a,b) => b.length-a.length);
+    
+    return final = str[0];
+    
+}
+
+// let str = 'io sono 232441221';
+
+
+
+// console.log(longestWord(str));
+
+// SCRIVERE UNA FUNZIONE CHE DATO UN ARRAY RITORNI 'PARI' O 'DISPARI' A SECONDA CHE LA SOMMA DEI SUOI ELEMENTI SIA PARI O DISPARI
+
+function pariOdispari(array) {
+
+    if((array.reduce((acc,n)=> acc+n))%2 == 0){
+        return console.log('pari');
+    } else { return console.log(('dispari'));}
+
+
+
+}
+
+// let arr =[1,2,3,4];
+
+// pariOdispari(arr)
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO UN ARRAY DI 0 E 1 E RESTITUISCA L'EQUIVALENTE NUMERO IN BASE DECIMALE ES [1,0] => 2
+
+
+function toDecimal(array) {
+
+    array = Number(array.join(''));
+
+    return parseInt(array,2)
+    
+}
+
+// let arr =[1,0,0,1,1,1]
+
+// console.log(toDecimal(arr));
+
+// VIENE ASSEGNATA UNA STRINGA CONTENENTE SOLO CARATTERI X E Y. SCRIVERE UNA FUNZIONE CHE RITORNI SE NUMERO DI X E DI Y è UGUALE 
+
+function XEqualY(str) {
+
+    str = str.split('')
+
+    let x = str.filter(el => el == 'x')
+
+    let y = str.filter(el => el == 'y')
+
+    if(x.length == y.length){
+        return true
+    } else return false
+    
+}
+
+// let str ='xxyxyy';
+
+// console.log(XEqualY(str));
+
+// SCRIVERE UNA FUNZIONE CHE ASSEGNATA UNA STRONGA ED UNA VOCALE RITORNI LA STRINGA ORIGINALE CON TUTTE LE VOCALI CAMBIATE IN QUELLA FORNITA
+
+function subVowels(str,vowel) {
+    
+    return str.replace(/[aeiouAEIOU]/g,vowel)
+    
+}
+
+// let str = 'Ciao a tutti'
+
+// console.log(subVowels(str,'o'));
+
+// SCRIVERE UNA FUNZIONE CHE ASSEGNATO UN ARRAY CONTENENTE NUMERI E STRINGHE, RITORNI UN NUOVO ARRAY FORMATO DA SOLI NUMERI. AD ESEMPIO [1,2,'A',4] => [1,2,4]
+
+function removeLetter(array) {
+
+    array = array.join(' ');
+
+    array = array.replace(/[A-Za-z]/g,' ');
+
+    
+    array = array.split(' ');
+
+   array = array.filter(el => el != '');
+
+    return array;
+    
+}
+
+// let arr = [1,2,'A',4,'b','X',23,'a',1,140,'A'];
+
+// console.log(removeLetter(arr));
+
+// SCRIVERE UNA FUNZIO NE CHE ASSEGNATA UNA SGTRINGA NE RESTITUISTA IL REVERSE 
+
+function reverse(str) {
+
+   return str.split('').reverse().join('');
+
+    
+}
+
+let str='Ciao a tutti';
+
+// console.log(reverse(str));
