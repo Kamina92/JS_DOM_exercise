@@ -537,7 +537,7 @@ function charObj(str) {
     
 }
 
-let str = 'casa';
+// let str = 'casa';
 
 // console.log(charObj(str));
 
@@ -677,4 +677,185 @@ function combine(arr1,arr2) {
     return ver.sort((a,b)=> b-a)
 }
 
-console.log(combine([2,1],[1,2,3]));
+// console.log(combine([2,1],[1,2,3]));
+
+// ABBIAMO UNA STRINGA DI PAROLE OGNI PAROLA CONTIENE UN NUMERO. SCRIVERE UNA FUNZIONE CHE RITORNI LA STRINGA ORDINATA IN BASE AL NUMERO PRESENTE IN OGNI PAROLA AD ESEMPIO 'Is2 Thi1s T4est 3a' => 'Thi1s Is2 3a T4est'
+
+
+function orderW(str) {
+    str = str.split(' ');
+
+    let final = [];
+
+    
+    for(let i=1; i<=str.length;i++){
+        
+        final.push(str.find(el => el.includes(i.toString())))
+
+
+    }
+
+    return final.join(' ')
+    
+}
+
+// let str = 'Is2 Thi1s T4est 3a';
+
+// console.log(orderW(str));
+
+// UN ISOGRAMMA E' UNA PAROLA ALL'INTERNO DELLA QUALE OGNI LETTERA COMPARE UNA ED UNA SOLA VOLTA AS ESEMPIO CIAO MA NON BARCA. SCRIVERE UNA FUNZIONE CHE DETERMINI SE UNA STRINGA è UN ISOGRAMMA. MAIUSCOLE E MINUSCOLE SONO CONSIDERATE UGUALI IN DERMINI DI PRESENZA
+
+
+function iso(str) {
+
+    return str == Array.from(new Set(str.split(''))).join('')
+    
+}
+
+// console.log(iso('buongiorno'));
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO 2 ARRAY E NE RITORNI LA DIFFERENZA. OSSIA RESTITUISTA IL PRIMO ARRAY PRIVO DEGLI ELEMENTI DEL SECONDO
+
+
+function diffArr(arr1,arr2) {
+
+    let final=[];
+
+     arr1.map((el,i)=>{
+        if(!arr2.includes(el)){
+            final.push(el)
+        }
+
+    })
+
+ return final
+
+    
+}
+
+// let arr1=[1,2,3,4,5]
+
+// let arr2=[1]
+
+// console.log(diffArr(arr1,arr2));
+
+
+// SCRIVERE UNA FUNZIONE CHE RITORNI I GIORNI MANCATI FINO A NATALE
+
+function untilXmas() {
+
+    let xmas = new Date ('25 December, 2022')
+
+    let today = Date()
+    
+    let until = xmas-today
+
+    console.log(until);
+}
+
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA UN ARRAY DI DIECI CIFRE E RESTITUISCA UNA STRINGA FORMATTATA COME UN NUMERO DI TELEFONO.A
+
+// AD ESEMPIO [1,2,3,4,5,6,7,8,9,0] => '(123) 456-7890'
+
+function phoneNumber(arr) {
+
+    return `(${arr[0]}${arr[1]}${arr[2]}) ${arr[3]}${arr[4]}${arr[5]}-${arr[6]}${arr[7]}${arr[8]}${arr[9]}`;
+    
+}
+
+// let arr =[1,2,3,4,5,6,7,8,9,0];
+
+// console.log(phoneNumber(arr));
+
+
+// VIENE FORNITO UN ARRAY DI NUMERI, TUTTI UGUALI TRANNE UNO. SCRIVERE UNA FUNZIONE CHE RITORNI L'ESTRANEO. AD ESEMPIO [3,3,3,2,3,3,3,3,3,]=>2
+
+
+function estraneo(arr) {
+
+    arr = arr.sort((a,b)=> a-b)
+
+    if(arr[0]==arr[1]){
+        return arr[arr.length-1]
+    } else return arr[0]
+
+    console.log(arr);
+    
+}
+
+// let arr= [3,3,3,3,4,3,3,3,3,3,3,3];
+
+// console.log(estraneo(arr));
+
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA UN ANNO E RITORNA I 'VENERDI 17' PRESENTI IN QUELL'ANNO, SOTTO FORMA DI ARRAY 
+
+function friday(year) {
+
+
+    
+}
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA COME PARAMETRO UN NUMERO N E:
+
+// - GENERA LA SEQUENZA DI FIBONACCI DI LUNGHEZZA N (E LA STAMPI IN CONSOLE)
+// - CALCOLA IL RAPPORTO FRA DUE TERMINI CONSECUTIVI DELLA STESSA(I RAPPORTI APPROSSIMANO LA SEZIONE AUREA,E LI STAMPA)
+// - STAMPA UN ARRAY CON LE DIFFERENZE FRA TERMINI CONSECUTIVI DEI RAPPORTI 
+
+
+function fib(num) {
+
+    let fibo =[1,1];
+
+    for (let i = 2; i < num; i++){
+        
+        fibo.push(fibo[i-2]+fibo[i-1])
+
+    }
+
+    console.log(fibo);
+
+    let rapporto=[]
+
+
+
+
+
+    
+}
+
+// fib(10)
+
+
+// SCRIVERE UNA FUNZIONE CHE ASSEGNATA UNA STRINGA RESTITUISCA UN OGGETTO 'PAROLA' : FREQUENZA, ORDINATO PER FREQUENZA DECRESCENTE.
+// PRIMA DI PORCESSARE LA STRINGA, RIPULIRLA DA PAROLE INUTILI (ARTICOLI,PREPOSIZIONI,...) E PUNTEGGIATURA
+
+function cWordEx(str) {
+
+    let del = ['di','a','da','in','con','su','per','tra','fra','il','le','lo','gli','la','e','ma','al','che','un','una','e','del','delle','della'];
+
+    str = str.replace(/[.,]/g,'');
+
+    str = str.toLowerCase().split(' ');
+
+    str = str.filter(el =>
+        !del.includes(el)  
+    )
+
+    let norep = Array.from(new Set(str))
+
+    let appoggio = norep.map((el,i)=> [el, str.filter(val => val == el).length])
+
+    appoggio = appoggio.sort((a,b)=> b[1]-a[1])
+
+    let final = Object.fromEntries(appoggio)
+
+    return final;
+
+
+}
+
+// let str = 'Gareth Damian Martin è un autore di videogiochi nel senso più puro del termine, perché non solo crea le sue opere in una quasi perfetta solitudine, determinandone quindi grandezza e limiti, ma ciò che fa si pone sempre in modo critico verso il medium e alcune delle sue forme più consolidate. In Other Waters, il suo primo gioco, fu concepito proprio in antitesi al concetto di aggressività che domina spesso i videogiochi, anche quelli apparentemente più innocui.'
+
+// cWordEx(str)
