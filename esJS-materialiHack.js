@@ -484,13 +484,197 @@ function pariOdispari() {
 
 function sumTo(num) {
     let final=0;
-    for(let i = 1; i<=num ;){
+
+    for(let i = 1; i<=num ; i++){
         final += i
     }
 
     return final;
     
 }
-console.log(sumTo(4));
 
-console.log('aa');
+// console.log(sumTo(5));
+
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO DUE ARRAY E NE RESTITUISCA IL PRODOTTO SCALARE
+
+function scalare(array1,array2) {
+
+    let final = 0;
+
+    array1.forEach((el,i)=>{
+        final += el*array2[i]
+    });
+
+    return final
+    
+}
+
+// let arr1 = [1,2,3];
+// let arr2 = [2,6,9];
+
+// console.log(scalare(arr1,arr2));
+
+// VIENE FORNITA UNA STRINGA. RITORNARE UN OGGETTO CON CHIAVE IL CARATTERE, VALORE IL NUMERO DI VOLTE CHE COMPARE NELLA STRINGA
+// AD ESEMPIO 'casa =>' {'a': 2,'c': 1,'s':1}
+
+
+function charObj(str) {
+
+    str = str.split('');
+
+    let key = Array.from(new Set(str))
+
+    key.sort();
+
+    let final = key.map(el => 
+        [el,str.filter(val => val == el).length]
+    )
+
+
+    return Object.fromEntries(final)
+
+    
+}
+
+let str = 'casa';
+
+// console.log(charObj(str));
+
+// SCRIVERE UNA FUNZIONE CHE PRENDE IN INGRESSO UN NUMERO INTERO E RITORNA IL NUMERO DI BIT UGUALI AD UNO NELLA SUA RAPPRESENTAZIONE BINARIA 
+// ES 42, IN BINARIO 101010 => 3
+
+function countBin(num) {
+
+    num = num.toString(2)
+    
+    return num.split('').filter(el => el == 1).length
+    
+}
+
+// console.log(countBin(42));
+
+// VIENE ASSEGNATO UN ARRAY DI NOMI. SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO L'ARRAY ED UN NUMERO E RITORNI UN NUOVO ARRAY CONTENENTE SOLO I NOMI DI LUNGHEZZA UGUALE AL NUMERO ASSEGNATO, IN ORDINE ALFABETICO. AD ESEMPIO ['GIGI','TIZIO','CAIO','PIERO'],4 => ['CAIO','GIGI']. EXTRA LE LA FUNZIONE VIENE INVOCATA SENZA IL SECONDO PARAMETRO DEVE RITORNARE TUTTI I NOMI LUNGHI 5 LETTERE 
+
+function findName(array,num) {
+
+    if (num == undefined){
+        return array.filter(el => el.length == 5);
+    }else return array.filter(el => el.length == num);
+    
+}
+
+
+
+// let arr = ['GIGI','TIZIO','CAIO','PIERO','fil'];
+
+// console.log(findName(arr,4));
+
+// SCRIVERE UNA FUNZIONE CHE ASSEGNATO UN NUMERO INTERO RITORNI TUITTI I NUMERI PRIMI ESISTENTI FINO AL NUMERO ASSEGNATO (COMPRESO).
+// AD ESEMPIO : 15 => [2,3,5,7,11,13]
+
+function primoFino(num) {
+
+    let arr =[];
+
+    for(let i=2; i<=num;i++){
+        if(i==2){
+            arr.push(i)
+        }
+        if(i==3){
+            arr.push(i)
+        }
+
+        if (i%2!=0 && i%3!=0 && i%7!=0) {
+            arr.push(i)
+        }
+
+    }
+    
+    return arr
+}
+
+// console.log(primoFino(51));
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA UN NUMERO INTERO E RITORNA TUTTI I SUOI DIVISORI. DOPO TRASFORMARE LA FUNZIONE PER VERIFICARE SE UN NUMERO E' PRIMO 
+
+function divisori(num) {
+
+    let arr =[];
+
+    for (let i = 0; i <= num; i++) {
+        if (num%i == 0) {
+            arr.push(i)
+        }
+    }
+    return arr
+}
+
+// console.log(divisori(10));
+
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO UNA STRINGA (UNA PASSWORD) E RITORNI TRUE O FALSE SE E' VALIDA. PER ESSERE VALIDA LA PASSWORD DEVE ESSERE LUNGA ALMENO 6 CARATTERI E DEVE CONTENERE ALMENO UN NUMERO. EXTRA COME PRIMA MA NELLA PASSWORD NON CI DEVONO ESSERE CARATTERI RIPETUTI 
+
+
+function password(str) {
+
+    str=str.split('');
+
+    let ver = Array.from(new Set(str))
+
+    console.log(ver);
+    if (str.length>=6 && str.find(el => el>=0) != undefined && str.length == ver.length){
+
+        return true 
+
+    } else return false 
+    
+}
+// console.log(password('provadd1'));
+
+// VIENE ASSEGNAOT UN ARRAY DI NUMERI INTERI, IN CUI SONO PRESENTI IN POSIZIONI RANDOM, UN NUMERO ED IL SUO OPPOSTO TRANNE CHE PER UN ELEMENTO CHE COMPARE SENZA L'OPPOSTO. SCRIVERE UNA FUNZIONE CHE RITORNA TALE ELEMENTO AD ESEMPIO [-3,1,2,3,-1,4,-2] => 4
+
+
+function loneN(array) {
+
+    let final = [];
+
+    array.forEach((el,i)=>{
+        if (array.find(val=> val == -el) == undefined){
+            final.push(el)
+        }
+    })
+    return final
+}
+
+
+// let arr = [-3,1,2,3,-1,4,-2];
+// console.log(loneN(arr))
+
+// SCRIVERE UNA FUNZIONE CHE ACCETTA IN INGRESSO UN NUMERO E RITORNA UN NUMERO FORMATO DAI QUADRATI DI OGNI CIFRA PRESENTE IN INGRESSO. AD ESEMPIO 372 => 9494
+
+function quadrati(num) {
+
+    return  Number(num.toString().split('').map(el=> el = el**2).join(''))
+    
+}
+
+let num = 123;
+
+// console.log(quadrati(num));
+
+// SCRIVERE UNA FUNZIONE CHE UNISCA DIE ARRAY DI NUMERI, ORDINANDOLI IN MODO DECRESCENTE ED ELIMINANDO I DUPLICATI AD ESEMPIO 
+
+// [2,1],[1,2,3] =>[3,2,1]
+
+function combine(arr1,arr2) {
+    arr1.forEach(el =>{
+        arr2.push(el)
+    })
+
+    let ver = Array.from(new Set(arr2))
+
+    return ver.sort((a,b)=> b-a)
+}
+
+console.log(combine([2,1],[1,2,3]));
